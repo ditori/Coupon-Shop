@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>User Page</title>
+
+		<script src="http://yaniv.isa-geek.net/CouponShop/JSFilesLibery.js" type="text/javascript"></script>
+
+		<!-- User-Edit-Page.js contain liseners to the input boxes and some additional functions -->
+		<script src="http://yaniv.isa-geek.net/CouponShop/User/User-Edit-Page.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div id='navbar'></div>
+
+		<script type="text/javascript">
+			buildNavBar();
+		</script>
+
+		<h1 class="text-center">Welcome, This page is for editing your account details</h1><br>
+		<h2 class="text-center">please insest new details for your account and save it.</h2>
+
+        <!-- Name panel -->
+        <div class= "panel panel-default">
+            <div class="panel-heading">
+                <h2>Name area</h2>
+            </div>
+            <div class="panel-body">
+                <form class="form-inline text-center">
+                    <div class="form-group">
+            			<label for="first-name">first name: </label>
+                        <input type="text" id="first-name" autofocus>
+                    </div>
+                    <div class="form-group">
+            			<span id='first-name-varific' class="fa fa-question-circle-o" aria-hidden="true" title="please insert first name"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">last name: </label>
+                        <input type="text" id="last-name">
+                    </div>
+                    <div class="form-group">
+            			<span id='last-name-varific' class="fa fa-question-circle-o" aria-hidden="true" title="please insert last name"></span>
+                    </div>
+                    <input type="button" value="Submit" onclick="nameFieldUpdate()">
+                </form>
+            </div>
+        </div>
+        <!-- end of Name panel -->
+
+        <!-- Password panel -->
+        <div class= "panel panel-default">
+            <div class="panel-heading">
+                <h2>Password area</h2>
+            </div>
+            <div class="panel-body">
+				<form class="text-center">
+	                <label for="old-password">old password: </label>
+					<input type="password" id="old-password" maxlength="18">
+	                <span id='old-password-varific' class="fa fa-question-circle-o" aria-hidden="true" title="please insert password"></span><br><br>
+				</form>
+
+				<form class="form-inline text-center">
+                    <div class="form-group">
+                        <label for="new-password">new password: </label>
+            			<input type="password" id="new-password" maxlength="18">
+                    </div>
+                    <div class="form-group">
+                        <label for="password-confirm">confirm new password: </label>
+            			<input type="password" id="password-confirm" maxlength="18">
+                    </div>
+                    <div class="form-group">
+            			<span id='password-varific' class="fa fa-question-circle-o" aria-hidden="true" title="please insert password"></span>
+                    </div>
+                    <input type="button" value="Submit" onclick="passwordFieldUpdate()">
+                </form>
+            </div>
+        </div>
+        <!-- end of Password panel -->
+
+        <!-- Email panel -->
+        <div class= "panel panel-default">
+            <div class="panel-heading">
+                <h2>Email area</h2>
+            </div>
+            <div class="panel-body">
+                <form class="form-inline text-center">
+                    <div class="form-group">
+                        <label for="email">email: </label>
+            			<input type="email" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="email-confirm">confirm email: </label>
+            			<input type="email" id="email-confirm">
+                    </div>
+                    <div class="form-group">
+            			<span id='password-varific' class="fa fa-question-circle-o" aria-hidden="true" title="please insert password"></span><br>
+                    </div>
+                    <input type="button" value="Submit" onclick="emailFieldUpdate()">
+                </form>
+            </div>
+        </div>
+        <!-- end of Email panel -->
+
+	</body>
+	<footer>
+		<div class="text-center">
+			<button onclick="window.location= 'http://yaniv.isa-geek.net/CouponShop/User/User-Page.html';">Back to you account details</button>
+		</div>
+	</footer>
+</html>

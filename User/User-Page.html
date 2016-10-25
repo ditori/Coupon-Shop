@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>User Page</title>
+
+		<script src="http://yaniv.isa-geek.net/CouponShop/JSFilesLibery.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+
+			$(document).ready(function()
+			{
+					var usr_id= docCookies.getItem("yaniv-isa-geek-userid");
+                    $.ajax({
+                        url: 'http://yaniv.isa-geek.net/CouponShop/User/getUserDetails.php',
+                        type: 'POST',
+                        data: {"user_id" : usr_id},
+                        success: function(data)
+                        {
+                            if (data!=null) // it is the user current password
+                            {
+								var ob = JSON.parse(data);
+                                $("#user-name-title").append(document.createTextNode(ob.username));
+								$("#user-first-name").append(document.createTextNode(ob.first_name));
+								$("#user-last-name").append(document.createTextNode(ob.last_name));
+								$("#user-email").append(document.createTextNode(ob.email));
+								$("#user-signup-date").append(document.createTextNode(ob.sign_up_date));
+                            }
+                            else // it is not the user current password
+                            {
+                                alert("there is a problem finding your user details, try to log out and login again.");
+                            }
+                        }
+                    });
+			});
+
+		</script>
+	</head>
+	<body>
+		<div id='navbar'></div>
+
+		<script type="text/javascript">
+			buildNavBar();
+		</script>
+
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h1 class="text-center">
+					Welcome <span id="user-name-title"></span>, Those are your account details
+				</h1>
+			</div>
+			<div class="panel-body text-center">
+				<label for="user-first-name">First name: </label><div id="user-first-name"></div><br/>
+				<label for="user-last-name">Last name: </label><div id="user-last-name"></div><br/>
+				<label for="user-email">Email: </label><div id="user-email"></div><br/>
+				<label for="user-signup-date">sign up date: </label><div id="user-signup-date"></div><br/>
+			</div>
+		</div>
+
+	</body>
+	<footer>
+		<div class="text-center">
+			<button onclick="window.location= 'http://yaniv.isa-geek.net/CouponShop/User/User-Edit-Page.html';">Edit your details</button>
+		</div>
+	</footer>
+</html>

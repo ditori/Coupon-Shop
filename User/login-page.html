@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Coupons Shop - Login Page</title>
+
+		<script src="http://yaniv.isa-geek.net/CouponShop/JSFilesLibery.js" type="text/javascript"></script>
+
+		<script>
+			function loginCheck()
+			{
+				var parm= 'username=' + document.getElementById('username').value;
+				parm= parm + '&pass=' + document.getElementById('pass').value;
+
+				var xhr = new XMLHttpRequest();
+				var url= 'http://yaniv.isa-geek.net/CouponShop/User/find-user.php';
+				xhr.open("POST",url, true);
+				xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhr.onreadystatechange = function()
+				{
+					if (xhr.readyState == 4 && xhr.status == 200)
+					{
+						var data = JSON.parse(xhr.responseText);
+
+						if (data== null)
+						{
+							alert("user was not found! please check the user and the password again.");
+						}
+						else if (data.user_id=="(-1)")
+						{
+							alert("password does not match the user! please check the user and the password again.");
+						}
+						else
+						{
+
+							docCookies.setItem('yaniv-isa-geek-userid', data.user_id, '6048e2', '/');
+							docCookies.setItem('yaniv-isa-geek-username', data.username, '6048e2', '/');
+							window.location.href="http://yaniv.isa-geek.net/CouponShop/home.html";
+						}
+					}
+				}
+				xhr.send(parm);
+			}
+		</script>
+	</head>
+	<body>
+		<div id='navbar'></div>
+
+		<script type="text/javascript">
+			buildNavBar();
+		</script>
+
+		<h1 class="text-center">Welcome, please insert your details</h1><br>
+		<form class="text-center">
+			Username: <input type="text" id="username" autofocus><br>
+			password: <input type="password" id="pass"><br>
+			<input type="button" value="Submit" onclick="loginCheck()">
+		</form>
+		<br><br>
+		<h2 class="text-center"><a href="/CouponShop/User/signup-page.html">Sign Up</a></h2>
+	</body>
+	<footer>
+	</footer>
+</html>
